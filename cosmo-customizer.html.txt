@@ -136,7 +136,7 @@
     
     <div class="preview-window">
       <div class="layer" id="base-layer">
-        <img src="/api/placeholder/400/400" alt="Base character" style="width: 100%; height: 100%; object-fit: contain;">
+        <img src="mynd/cosmo.png" alt="Base character" style="width: 100%; height: 100%; object-fit: contain;">
       </div>
       <div class="layer" id="hat-layer"></div>
       <div class="layer" id="top-layer"></div>
