@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .title {
+      font-size: 4rem;
+      text-align: center;
+      margin: 2rem 0;
+      text-shadow: 0 0 10px #fff,
+                   0 0 20px #fff,
+                   0 0 30px #e60073,
+                   0 0 40px #e60073;
+    }
+
+    .customizer {
+      background-color: #2a2a2a;
+      padding: 2rem;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 800px;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .preview-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .preview-window {
+      background-color: #333;
+      height: 400px;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .arrow-controls {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 2rem;
+    }
+
+    .arrow-controls.left {
+      left: 0;
+    }
+
+    .arrow-controls.right {
+      right: 0;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .arrow-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .arrow-button:hover {
+      transform: scale(1.2);
+    }
+
+    .control-label {
+      font-size: 1.2rem;
+      font-weight: bold;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-button {
+      background-color: #333;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s;
+    }
+
+    .social-button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">Cosmo The Alien</h1>
+
+  <div class="customizer">
+    <h2 class="preview-title">Make Your Own Cosmo</h2>
+    
+    <div class="preview-window">
+      <div class="layer" id="base-layer">
+        <img src="/api/placeholder/400/400" alt="Base character" style="width: 100%; height: 100%; object-fit: contain;">
+      </div>
+      <div class="layer" id="hat-layer"></div>
+      <div class="layer" id="top-layer"></div>
+      <div class="layer" id="bottom-layer"></div>
+    </div>
+
+    <div class="arrow-controls left">
+      <div class="control-group">
+        <button class="arrow-button" id="hat-prev">←</button>
+        <span class="control-label">Hat</span>
+      </div>
+      <div class="control-group">
+        <button class="arrow-button" id="shirt-prev">←</button>
+        <span class="control-label">Shirt</span>
+      </div>
+      <div class="control-group">
+        <button class="arrow-button" id="pants-prev">←</button>
+        <span class="control-label">Pants</span>
+      </div>
+    </div>
+
+    <div class="arrow-controls right">
+      <div class="control-group">
+        <span class="control-label">Hat</span>
+        <button class="arrow-button" id="hat-next">→</button>
+      </div>
+      <div class="control-group">
+        <span class="control-label">Shirt</span>
+        <button class="arrow-button" id="shirt-next">→</button>
+      </div>
+      <div class="control-group">
+        <span class="control-label">Pants</span>
+        <button class="arrow-button" id="pants-next">→</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-links">
+    <a href="#" class="social-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+      </svg>
+      X
+    </a>
+    <a href="#" class="social-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21.93 4.45c.17-.54-.32-1.03-.86-.86L2.31 9.94c-.45.14-.57.71-.22 1.03l6.86 5.55c.31.25.76.25 1.07 0l11.91-11.07z"/>
+      </svg>
+      Telegram
+    </a>
+  </div>
+
+  <script>
+    // State management
+    const state = {
+      hat: 1,
+      shirt: 1,
+      pants: 1,
+      maxHats: 8,
+      maxShirts: 12,
+      maxPants: 6
+    };
+
+    // Update functions
+    function updateHat(direction) {
+      if (direction === 'next') {
+        state.hat = state.hat === state.maxHats ? 1 : state.hat + 1;
+      } else {
+        state.hat = state.hat === 1 ? state.maxHats : state.hat - 1;
+      }
+      updateLayers();
+    }
+
+    function updateShirt(direction) {
+      if (direction === 'next') {
+        state.shirt = state.shirt === state.maxShirts ? 1 : state.shirt + 1;
+      } else {
+        state.shirt = state.shirt === 1 ? state.maxShirts : state.shirt - 1;
+      }
+      updateLayers();
+    }
+
+    function updatePants(direction) {
+      if (direction === 'next') {
+        state.pants = state.pants === state.maxPants ? 1 : state.pants + 1;
+      } else {
+        state.pants = state.pants === 1 ? state.maxPants : state.pants - 1;
+      }
+      updateLayers();
+    }
+
+    function updateLayers() {
+      // In a real implementation, this would update the image sources
+      console.log(`Hat: ${state.hat}, Shirt: ${state.shirt}, Pants: ${state.pants}`);
+    }
+
+    // Event listeners
+    document.getElementById('hat-prev').addEventListener('click', () => updateHat('prev'));
+    document.getElementById('hat-next').addEventListener('click', () => updateHat('next'));
+    document.getElementById('shirt-prev').addEventListener('click', () => updateShirt('prev'));
+    document.getElementById('shirt-next').addEventListener('click', () => updateShirt('next'));
+    document.getElementById('pants-prev').addEventListener('click', () => updatePants('prev'));
+    document.getElementById('pants-next').addEventListener('click', () => updatePants('next'));
+  </script>
+</body>
+</html>
