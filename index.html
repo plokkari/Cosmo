@@ -229,7 +229,10 @@
     }
 
     function updateLayers() {
-      // In a real implementation, this would update the image sources
+      const hatLayer = document.getElementById('hat-layer');
+      hatLayer.style.backgroundImage = `url('mynd/hat/${state.hat}.png')`;
+
+      // Similarly, update the shirt and pants layers if needed
       console.log(`Hat: ${state.hat}, Shirt: ${state.shirt}, Pants: ${state.pants}`);
     }
 
