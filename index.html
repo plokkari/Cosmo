@@ -230,9 +230,14 @@
 
     function updateLayers() {
       const hatLayer = document.getElementById('hat-layer');
+      const topLayer = document.getElementById('top-layer');
+      const bottomLayer = document.getElementById('bottom-layer');
+      
       hatLayer.style.backgroundImage = `url('mynd/hat/${state.hat}.png')`;
+      topLayer.style.backgroundImage = `url('mynd/top/${state.shirt}.png')`;
+      bottomLayer.style.backgroundImage = `url('mynd/bot/${state.pants}.png')`;
 
-      // Similarly, update the shirt and pants layers if needed
+      // Log the current state for debugging
       console.log(`Hat: ${state.hat}, Shirt: ${state.shirt}, Pants: ${state.pants}`);
     }
 
