@@ -267,9 +267,9 @@
   <script>
     // State management
     const state = {
-      hat: 1,
-      shirt: 1,
-      pants: 1,
+      hat: 0,
+      shirt: 0,
+      pants: 0,
       maxHats: 9,
       maxShirts: 13,
       maxPants: 7
@@ -308,7 +308,7 @@
       const layer = document.getElementById(layerId);
       const folder = type === 'hat' ? 'hat' : type === 'shirt' ? 'top' : 'bot';
       const value = type === 'hat' ? state.hat : type === 'shirt' ? state.shirt : state.pants;
-      layer.style.backgroundImage = `url('mynd/${folder}/${value}.png')`;
+      layer.style.backgroundImage = value === 0 ? 'none' : `url('mynd/${folder}/${value}.png')`;
     }
 
     // Random number generator
