@@ -160,7 +160,57 @@
       border-radius: 10px;
       font-size: 1.2rem;
       margin: 0 auto 2rem;
-      max-width: 600px; /* Reduced width */
+      max-width: 600px;
+    }
+
+    .roadmap-section {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .roadmap-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .roadmap {
+      background-color: #2a2a2a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      margin: 0 auto 2rem;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .roadmap h3 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .ca-box {
+      background-color: #e60073;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 1rem auto;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    .ca-box:hover {
+      background-color: #ff1a8c;
+    }
+
+    .why-cosmo {
+      background-color: #2a2a2a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      margin: 0 auto 2rem;
+      max-width: 800px;
     }
 
     /* Media queries for responsiveness */
@@ -286,7 +336,30 @@
   <div class="cosmo-section">
     <h2 class="cosmo-title">Who is Cosmo?</h2>
     <div class="cosmo-description">
-      Cosmo is no ordinary alien. Sent from the distant planet of Zyloth, his mission was clear, infiltrate Earth, identify the elusive species known as "rugpullers," and dissect them—both literally and figuratively. With his sharp wit and even sharper scalpel, Cosmo's adventures on Earth are anything but ordinary.
+      Cosmo is no ordinary alien. Sent from the distant planet of Zyloth, his mission was clear, infiltrate Earth, identify the elusive species known as "rugpullers," and dissect them—both literally and figuratively. Cosmo is here to stay and make a difference!
+    </div>
+  </div>
+
+  <div class="roadmap-section">
+    <h2 class="roadmap-title">Roadmap</h2>
+    <div class="roadmap">
+      <h3>Step 1</h3>
+      <p>Make a lot of content, make the website look nice and give all info about Cosmo, start advertising on social media to make a strong community.</p>
+      <h3>Step 2</h3>
+      <p>Decide the launch date and time and let the community vote on the best time that works for them, get everyone to help spread the word and reward the most active members and also make some games with cosmo that members can get rewards</p>
+      <h3>Step 3</h3>
+      <p>Launch the coin keep spreading the good word of cosmo, and keep growing a loyal and strong community.</p>
+      <h3>Step 4</h3>
+      <p>Keep making art and memes daily and find fun ways to keep the community growing by letting people decide if they want dev wallet to burn some tokens or do a giveaway to the community</p>
+      <h3>Step 5</h3>
+      <p>Enjoy the most popular alien to ever be created thanks to us!</p>
+    </div>
+    <div class="ca-box" onclick="copyCACode()">
+      CA: coming soon!
+    </div>
+    <div class="why-cosmo">
+      <h2>Why Cosmo?</h2>
+      <p>Cosmo is here for the long term, the vision is to let the community take control with voting polls like should we pick Meteora or raydium, moonshot or pumpfun, burn tokens or buy ads, do give away yes or no… Cosmo wants everyone to have a fair chance and no insiders so this coin can be what ever you want it to be.</p>
     </div>
   </div>
 
@@ -366,6 +439,10 @@
     updateLayer('hat-layer', 'hat');
     updateLayer('top-layer', 'shirt');
     updateLayer('bottom-layer', 'pants');
+
+    function copyCACode() {
+      /* Code to copy will be added here later */
+    }
   </script>
   <img src="mynd/cosmo.gif" alt="" style="width: 100%; height: auto;">
 </body>
